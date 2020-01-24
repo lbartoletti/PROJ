@@ -17,7 +17,7 @@ task:
     folder: $HOME/.ccache
 
   pkginstall_script:
-    - pkg install -y autoconf automake libtool pkgconf sqlite3 tiff ccache
+    - pkg install -y autoconf automake libtool pkgconf sqlite3 tiff ccache gmake
   download_grid_script:
     - fetch https://download.osgeo.org/proj/proj-datumgrid-1.8.zip
     - (cd data && tar xvf ../proj-datumgrid-1.8.zip)
@@ -25,7 +25,7 @@ task:
     - ./autogen.sh
     - CC="ccache cc" CXX="ccache c++" ./configure --disable-static
   compile_script:
-    - make $(MAKE_FLAGS)
+    - gmake $(MAKE_FLAGS)
   test_script:
-    - make check $(MAKE_FLAGS)
+    - gmake check $(MAKE_FLAGS)
 
